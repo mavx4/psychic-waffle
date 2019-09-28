@@ -1,0 +1,17 @@
+import numpy as np
+import pandas as pd
+!conda install -c anaconda xlrd --yes
+df=pd.read_csv('https://cocl.us/datascience_survey_data',index_col=0)
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+colors_list = ['#5cb85c', '#5bc0de', '#d9534f']
+df.sort_values(by='Very interested', ascending=False, inplace=True)
+df_pct=(100. * df / 2233).round(2)
+ax=df_pct.plot(kind='bar', figsize=(20, 8), width=0.8, color=colors_list)
+plt.title("Percentage of Respondents' interest in Data science areas", size=16)
+plt.gca().spines['right'].set_color('none')
+plt.gca().spines['top'].set_color('none')
+plt.gca().spines['left'].set_color('none')
+plt.yticks([])
+plt.legend(fontsize=14)
+plt.xticks(fontsize=14)
